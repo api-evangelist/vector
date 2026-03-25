@@ -1,0 +1,38 @@
+aid: vector
+name: Vector
+description: >-
+  Vector is an open source high-performance observability data pipeline from Datadog for collecting, transforming, and routing logs, metrics, and traces.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Observability
+  - Data Pipeline
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/vector/refs/heads/main/apis.yml
+created: '2026-03-25'
+modified: '2026-03-25'
+specificationVersion: '0.19'
+apis:
+  - aid: vector:vector
+    name: Vector
+    description: >-
+      Vector is an open source high-performance observability data pipeline from Datadog for collecting, transforming, and routing logs, metrics, and traces.
+    humanURL: https://vector.dev
+    tags:
+      - Observability
+      - Data Pipeline
+    properties:
+      - type: Documentation
+        url: https://vector.dev/docs/
+      - type: GitHub Repository
+        url: https://github.com/vectordotdev/vector
+common:
+  - type: Website
+    url: https://vector.dev
+  - type: Documentation
+    url: https://vector.dev/docs/
+  - type: GitHub Organization
+    url: https://github.com/vectordotdev/vector
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
