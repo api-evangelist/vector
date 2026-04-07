@@ -5,8 +5,8 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Observability
   - Data Pipeline
+  - Observability
 url: >-
   https://raw.githubusercontent.com/api-evangelist/vector/refs/heads/main/apis.yml
 created: '2026-03-25'
@@ -19,8 +19,8 @@ apis:
       Vector is an open source high-performance observability data pipeline from Datadog for collecting, transforming, and routing logs, metrics, and traces.
     humanURL: https://vector.dev
     tags:
-      - Observability
       - Data Pipeline
+      - Observability
     properties:
       - type: Documentation
         url: https://vector.dev/docs/
