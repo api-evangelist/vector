@@ -1,0 +1,32 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Vector Observability API"
+  description: "Vector Observability API for health monitoring of a running Vector data pipeline instance."
+  tags:
+    - Vector
+    - Observability
+    - Data Pipeline
+    - Health Monitoring
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+capability:
+  consumes:
+    - type: http
+      namespace: vector-api
+      baseUri: http://127.0.0.1:8686
+      description: "Vector Observability HTTP API."
+      resources:
+        - name: health
+          path: /health
+          description: "Vector instance health status."
+          operations:
+            - name: get-health
+              method: GET
+              description: "Check if Vector is running normally."
+              outputRawFormat: json
+              outputParameters:
+                - name: ok
+                  type: boolean
+                  value: "$.ok"

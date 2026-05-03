@@ -1,0 +1,75 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Vector"
+  description: "Unified vocabulary for the Vector observability data pipeline, covering pipeline components, configuration options, and monitoring capabilities."
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  apis:
+    - namespace: vector-api
+      name: Vector Observability API
+      version: "0.55.0"
+      baseUrl: "http://127.0.0.1:8686"
+      status: active
+
+  resources:
+    - name: health
+      api: vector-api
+      actions: [get-health]
+      description: "Vector instance health status."
+
+  actions:
+    - name: get-health
+      httpMethod: GET
+      pattern: read
+      description: "Check if Vector is running normally."
+
+  schemas:
+    core:
+      - name: HealthResponse
+        description: "Health status response with ok boolean field."
+        keyProperties: [ok]
+
+  authentication:
+    schemes:
+      - type: none
+        description: "Vector API does not currently support authentication."
+
+capability:
+  workflows:
+    - name: Pipeline Monitoring
+      file: capabilities/pipeline-monitoring.yaml
+      description: "Health monitoring workflow for Vector pipeline instances."
+      apisCombined: [vector-api]
+      toolCount: 1
+      personas: [DevOps Engineer]
+      domains: [Observability, Data Pipeline]
+
+  personas:
+    - id: devops-engineer
+      name: DevOps Engineer
+      description: "Engineer responsible for operating and monitoring observability data pipelines."
+      workflows: [Pipeline Monitoring]
+
+  domains:
+    - name: Observability
+      description: "Collecting, transforming, and routing logs, metrics, and traces."
+      resources: [health]
+
+  namespaces:
+    - name: vector-api
+      type: consumed
+    - name: vector-pipeline-api
+      type: rest-exposed
+      port: 8080
+    - name: vector-pipeline-mcp
+      type: mcp-exposed
+      port: 9090
+
+crossReference:
+  - resource: health
+    operations: [get-health]
+    workflows: [Pipeline Monitoring]
+    personas: [DevOps Engineer]

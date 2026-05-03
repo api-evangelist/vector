@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/vector/refs/heads/main/json-schema/vector-observability-api-health-response-schema.json",
+  "title": "HealthResponse",
+  "description": "HealthResponse schema from Vector Observability API",
+  "type": "object",
+  "properties": {
+    "ok": {
+      "type": "boolean",
+      "description": "Whether Vector is running normally. True when operational, false during shutdown.",
+      "example": true
+    }
+  }
+}

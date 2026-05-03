@@ -1,0 +1,146 @@
+rules:
+
+  # INFO / METADATA
+  info-title-required:
+    description: API title must be present.
+    severity: error
+    given: "$.info"
+    then:
+      field: title
+      function: truthy
+
+  info-title-starts-with-vector:
+    description: API title should start with "Vector".
+    severity: warn
+    given: "$.info.title"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Vector"
+
+  info-description-required:
+    description: API description must be present.
+    severity: warn
+    given: "$.info"
+    then:
+      field: description
+      function: truthy
+
+  info-version-required:
+    description: API version must be specified.
+    severity: error
+    given: "$.info"
+    then:
+      field: version
+      function: truthy
+
+  # OPENAPI VERSION
+  openapi-version-3x:
+    description: Must use OpenAPI 3.x.
+    severity: error
+    given: "$"
+    then:
+      field: openapi
+      function: pattern
+      functionOptions:
+        match: "^3\\."
+
+  # SERVERS
+  servers-required:
+    description: Servers array must be defined.
+    severity: error
+    given: "$"
+    then:
+      field: servers
+      function: truthy
+
+  servers-description-required:
+    description: Each server should have a description.
+    severity: warn
+    given: "$.servers[*]"
+    then:
+      field: description
+      function: truthy
+
+  # OPERATIONS
+  operation-operationId-required:
+    description: All operations must have an operationId.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete,head]"
+    then:
+      field: operationId
+      function: truthy
+
+  operation-summary-required:
+    description: All operations must have a summary.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete,head]"
+    then:
+      field: summary
+      function: truthy
+
+  operation-summary-starts-with-vector:
+    description: Operation summaries should start with "Vector".
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Vector"
+
+  operation-description-required:
+    description: All operations should have a description.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete,head]"
+    then:
+      field: description
+      function: truthy
+
+  # RESPONSES
+  response-success-required:
+    description: Operations must define at least one 2xx response.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ['200']
+            - required: ['201']
+            - required: ['204']
+
+  response-description-required:
+    description: All responses must have a description.
+    severity: error
+    given: "$.paths[*][*].responses[*]"
+    then:
+      field: description
+      function: truthy
+
+  # SCHEMAS
+  schema-description-required:
+    description: Schema definitions should have descriptions.
+    severity: warn
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy
+
+  # GENERAL QUALITY
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: "$..description"
+    then:
+      function: pattern
+      functionOptions:
+        match: ".+"
+
+  health-endpoint-required:
+    description: Observability API should expose a /health endpoint.
+    severity: error
+    given: "$.paths"
+    then:
+      field: /health
+      function: truthy
