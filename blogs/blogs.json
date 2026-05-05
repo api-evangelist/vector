@@ -1,0 +1,13 @@
+{
+  "repo": "vector",
+  "feeds": [
+    {
+      "source": "https://vector.dev/blog/",
+      "feed_url": "https://vector.dev/blog/index.xml",
+      "saved": 10,
+      "title": "The Vector blog on Vector"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:38:03Z"
+}
