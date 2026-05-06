@@ -1,57 +1,68 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Vector Pipeline Monitoring"
-  description: "Workflow capability for DevOps engineers monitoring Vector observability pipeline health. Provides health check access for integration with load balancers, Kubernetes probes, and monitoring systems."
+  label: Vector Pipeline Monitoring
+  description: Workflow capability for DevOps engineers monitoring Vector observability pipeline health. Provides health check
+    access for integration with load balancers, Kubernetes probes, and monitoring systems.
   tags:
-    - Vector
-    - Observability
-    - Data Pipeline
-    - DevOps
-    - Monitoring
-  created: "2026-05-03"
-  modified: "2026-05-03"
-
+  - Vector
+  - Observability
+  - Data Pipeline
+  - DevOps
+  - Monitoring
+  created: '2026-05-03'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      VECTOR_API_ADDR: VECTOR_API_ADDR
-
+- namespace: env
+  keys:
+    VECTOR_API_ADDR: VECTOR_API_ADDR
 capability:
   consumes:
-    - import: vector-api
-      location: ./shared/observability-api.yaml
-
+  - type: http
+    namespace: vector-api
+    baseUri: http://127.0.0.1:8686
+    description: Vector Observability HTTP API.
+    resources:
+    - name: health
+      path: /health
+      description: Vector instance health status.
+      operations:
+      - name: get-health
+        method: GET
+        description: Check if Vector is running normally.
+        outputRawFormat: json
+        outputParameters:
+        - name: ok
+          type: boolean
+          value: $.ok
   exposes:
-    - type: rest
-      port: 8080
-      namespace: vector-pipeline-api
-      description: "Unified REST API for Vector pipeline monitoring."
-      resources:
-        - path: /v1/health
-          name: health
-          description: "Vector pipeline health status."
-          operations:
-            - method: GET
-              name: get-health
-              description: "Check if the Vector pipeline is running and healthy."
-              call: "vector-api.get-health"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: vector-pipeline-mcp
-      transport: http
-      description: "MCP server for AI-assisted Vector pipeline monitoring."
-      tools:
-        - name: get-vector-health
-          description: "Check the health status of a running Vector observability pipeline instance. Returns ok:true when healthy."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "vector-api.get-health"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: vector-pipeline-api
+    description: Unified REST API for Vector pipeline monitoring.
+    resources:
+    - path: /v1/health
+      name: health
+      description: Vector pipeline health status.
+      operations:
+      - method: GET
+        name: get-health
+        description: Check if the Vector pipeline is running and healthy.
+        call: vector-api.get-health
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: vector-pipeline-mcp
+    transport: http
+    description: MCP server for AI-assisted Vector pipeline monitoring.
+    tools:
+    - name: get-vector-health
+      description: Check the health status of a running Vector observability pipeline instance. Returns ok:true when healthy.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: vector-api.get-health
+      outputParameters:
+      - type: object
+        mapping: $.
