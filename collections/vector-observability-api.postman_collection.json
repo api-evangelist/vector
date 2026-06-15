@@ -1,0 +1,180 @@
+{
+  "item": [
+    {
+      "id": "b0ae5a4f-53a5-4065-b4bc-a311fa3e597c",
+      "name": "Health",
+      "description": {
+        "content": "Health check endpoints for load balancers and Kubernetes probes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c06498bf-f50f-4a28-97c6-2aa9de08235f",
+          "name": "Vector Get Health Status",
+          "request": {
+            "name": "Vector Get Health Status",
+            "description": {
+              "content": "Returns the health status of the running Vector instance. Returns HTTP 200 with {\"ok\": true} when Vector is running normally. Returns HTTP 200 with {\"ok\": false} when Vector is shutting down. Used by load balancers and Kubernetes liveness/readiness probes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2d182a4-2634-4a0d-8c99-620dc6ed7d35",
+              "name": "Vector health status response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffe8a080-e42e-47c2-a49f-2358509f8a40",
+          "name": "Vector Head Health Check",
+          "request": {
+            "name": "Vector Head Health Check",
+            "description": {
+              "content": "Same semantics as GET /health but returns no response body. Used for lightweight health probes where the response body is not needed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "HEAD",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4471c58-1d57-44fa-9f91-86bf74a1bc51",
+              "name": "Vector is healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "HEAD",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2a498c2b-ef96-45de-a6d8-79648f389993",
+      "name": "Components",
+      "description": {
+        "content": "List and inspect Vector pipeline components (sources, transforms, sinks).",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "c11a40de-58e4-494e-99be-632a8cd5637c",
+      "name": "Events",
+      "description": {
+        "content": "Stream output events from Vector components for debugging and monitoring.",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://127.0.0.1:8686",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "206a54e0-155c-43c8-9ae6-49db3a821a03",
+    "name": "Vector Observability API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Vector is a high-performance observability data pipeline for collecting, transforming, and routing logs, metrics, and traces. The Vector Observability API provides HTTP endpoints for health checks and gRPC endpoints for component management, event streaming, and pipeline observability. The API must be explicitly enabled in Vector configuration (api.enabled: true) and binds to 127.0.0.1:8686 by default. The API does not currently support authentication and should only be enabled in isolated environments.\n\nContact Support:\n Name: Vector Community",
+      "type": "text/plain"
+    }
+  }
+}
