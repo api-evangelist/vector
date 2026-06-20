@@ -6,7 +6,7 @@ description: >-
   transforms, and 80+ sinks. It provides a built-in API for health monitoring and component inspection, plus Vector
   Remap Language (VRL) for powerful data transformation.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Data Pipeline
   - Logs
