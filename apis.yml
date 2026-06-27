@@ -44,7 +44,7 @@ apis:
       - type: JSONStructure
         url: json-structure/vector-observability-api-health-response-structure.json
         title: Health Response Structure
-      - type: Example
+      - type: Examples
         url: examples/vector-observability-api-health-response-example.json
         title: Health Response Example
       - type: JSONLD
@@ -93,7 +93,7 @@ common:
     url: https://vector.dev/releases/
   - type: Blog
     url: https://vector.dev/blog/
-  - type: Forum
+  - type: Forums
     url: https://discord.com/invite/n2yjjZR
   - type: StackOverflow
     url: https://stackoverflow.com/questions/tagged/vector-dev
