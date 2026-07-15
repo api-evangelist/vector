@@ -81,6 +81,8 @@ apis:
       - type: GitHubRepository
         url: https://github.com/vectordotdev/helm-charts
 common:
+  - type: AgenticAccess
+    url: agentic-access/vector-agentic-access.yml
   - type: DomainSecurity
     url: security/vector-domain-security.yml
   - type: Website
