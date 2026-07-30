@@ -6,7 +6,19 @@ description: >-
   transforms, and 80+ sinks. It provides a built-in API for health monitoring and component inspection, plus Vector
   Remap Language (VRL) for powerful data transformation.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/vector.png
 tags:
   - Data Pipeline
   - Logs
@@ -20,66 +32,57 @@ created: '2026-03-25'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: vector:vector-observability-api
-    name: Vector Observability API
-    description: >-
-      The Vector Observability API provides HTTP endpoints for health monitoring of running Vector instances and gRPC
-      endpoints for component inspection and event streaming. Enable via api.enabled: true in Vector configuration.
-      Binds to 127.0.0.1:8686 by default. Note: the API does not support authentication and should only be used in
-      isolated environments.
-    humanURL: https://vector.dev/docs/reference/api/
-    baseURL: http://127.0.0.1:8686
-    tags:
-      - Health Monitoring
-      - Observability
-      - Pipeline Management
-    properties:
-      - type: Documentation
-        url: https://vector.dev/docs/reference/api/
-      - type: OpenAPI
-        url: openapi/vector-observability-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/vector-observability-api-health-response-schema.json
-        title: Health Response Schema
-      - type: JSONStructure
-        url: json-structure/vector-observability-api-health-response-structure.json
-        title: Health Response Structure
-      - type: Examples
-        url: examples/vector-observability-api-health-response-example.json
-        title: Health Response Example
-      - type: JSONLD
-        url: json-ld/vector-observability-api-context.jsonld
-  - aid: vector:vector-vrl
-    name: Vector Remap Language (VRL)
-    description: >-
-      Vector Remap Language (VRL) is a purpose-built expression language for transforming observability data in Vector.
-      Provides 100+ built-in functions for parsing, filtering, enriching, and transforming logs, metrics, and traces
-      without leaving the Vector pipeline.
-    humanURL: https://vector.dev/docs/reference/vrl/
-    tags:
-      - Data Transformation
-      - Expression Language
-      - VRL
-    properties:
-      - type: Documentation
-        url: https://vector.dev/docs/reference/vrl/
-      - type: GitHubRepository
-        url: https://github.com/vectordotdev/vrl
-  - aid: vector:vector-helm
-    name: Vector Helm Charts
-    description: >-
-      Official Helm charts for deploying Vector on Kubernetes as a DaemonSet (agent mode) or Deployment (aggregator
-      mode).
-    humanURL: https://vector.dev/docs/setup/installation/package-managers/helm/
-    tags:
-      - Helm
-      - Kubernetes
-      - Deployment
-    properties:
-      - type: Documentation
-        url: https://vector.dev/docs/setup/installation/package-managers/helm/
-      - type: GitHubRepository
-        url: https://github.com/vectordotdev/helm-charts
+- aid: vector:vector-vrl
+  name: Vector Remap Language (VRL)
+  description: >-
+    Vector Remap Language (VRL) is a purpose-built expression language for transforming observability
+    data in Vector. Provides 100+ built-in functions for parsing, filtering, enriching, and transforming
+    logs, metrics, and traces without leaving the Vector pipeline.
+  humanURL: https://vector.dev/docs/reference/vrl/
+  tags:
+  - Data Transformation
+  - Expression Language
+  - VRL
+  properties:
+  - type: Documentation
+    url: https://vector.dev/docs/reference/vrl/
+  - type: GitHubRepository
+    url: https://github.com/vectordotdev/vrl
+- aid: vector:vector-helm
+  name: Vector Helm Charts
+  description: >-
+    Official Helm charts for deploying Vector on Kubernetes as a DaemonSet (agent mode) or Deployment
+    (aggregator mode).
+  humanURL: https://vector.dev/docs/setup/installation/package-managers/helm/
+  tags:
+  - Helm
+  - Kubernetes
+  - Deployment
+  properties:
+  - type: Documentation
+    url: https://vector.dev/docs/setup/installation/package-managers/helm/
+  - type: GitHubRepository
+    url: https://github.com/vectordotdev/helm-charts
+- aid: vector:vector-health-api
+  name: Vector Health API
+  description: Health check endpoints for load balancers and Kubernetes probes.
+  humanURL: https://vector.dev/docs/reference/api/
+  baseURL: http://127.0.0.1:8686
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/vector-health-api-openapi.yml
+  - type: Documentation
+    url: https://vector.dev/docs/reference/api/
+  - type: JSONSchema
+    url: json-schema/vector-observability-api-health-response-schema.json
+  - type: JSONStructure
+    url: json-structure/vector-observability-api-health-response-structure.json
+  - type: Examples
+    url: examples/vector-observability-api-health-response-example.json
+  - type: JSONLD
+    url: json-ld/vector-observability-api-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/vector-agentic-access.yml
