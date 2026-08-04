@@ -1,0 +1,14 @@
+{
+  "provider": "vector",
+  "sources": [
+    "vector-health-api-openapi.yml"
+  ],
+  "outputs": [
+    "vector-health-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
