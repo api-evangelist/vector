@@ -84,6 +84,9 @@ apis:
   - type: JSONLD
     url: json-ld/vector-observability-api-context.jsonld
 common:
+  - type: License
+    name: MPL-2.0
+    url: https://github.com/vectordotdev/vrl/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/vector-agentic-access.yml
   - type: DomainSecurity
