@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vector Observability Health API",
+    "version": "0.55.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Vector Get Health Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8686/health"
+          },
+          "docs": "Returns the health status of the running Vector instance. Returns HTTP 200 with {\"ok\": true} when Vector is running normally. Returns HTTP 200 with {\"ok\": false} when Vector is shutting down. Used by load balancers and Kubernetes liveness/readiness probes."
+        },
+        {
+          "info": {
+            "name": "Vector Head Health Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "http://127.0.0.1:8686/health"
+          },
+          "docs": "Same semantics as GET /health but returns no response body. Used for lightweight health probes where the response body is not needed."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
