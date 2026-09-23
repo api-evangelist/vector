@@ -1,7 +1,7 @@
 {
   "provider": "vector",
   "sources": [
-    "vector-health-api-openapi.yml"
+    "_ae-authored/vector-observability-api-openapi.yml"
   ],
   "outputs": [
     "vector-health-api-openapi.yml"
@@ -10,8 +10,11 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "vector-health-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "vector-observability-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "vector-health-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
