@@ -37,7 +37,7 @@ tags:
   - Logs
   - Metrics
   - Observability
-  - Open-Source
+  - Open Source
   - Rust
   - Traces
 tags_raw:
@@ -48,6 +48,7 @@ tags_raw:
   - Open Source
   - Rust
   - Traces
+  - Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/vector/refs/heads/main/apis.yml
 created: '2026-03-25'
 modified: '2026-05-19'
